@@ -6,9 +6,10 @@ require_once '../Transaction.php';
 
 $transaction = new Transaction( 255.9, 'Transaction 1' , 0.0 , 0.0);  // passing in the arguments 
 
-$transaction->addTax(7);
-$transaction->getDiscount(3);
-$price = $transaction->calculateTotalAmount();
+$price = $transaction
+            ->addTax(7)
+            ->getDiscount(3)
+            ->calculateTotalAmount();   // Method Chaining
 
 echo '<pre>';
 echo 'After Tax and Discount, the total amount will be $' . $price;

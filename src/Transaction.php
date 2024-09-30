@@ -20,12 +20,24 @@ class Transaction {
         return $this->amount;
     }
 
-    public function addTax(float $rate) {
-        $this->taxamount = $this->amount * $rate /100;  // this.amount = this.amount * rate / 100;
+    // public function addTax(float $rate) {
+    //     $this->taxamount = $this->amount * $rate /100;  // this.amount = this.amount * rate / 100;
+    // }
+
+    // public function getDiscount(float $rate) {
+    //     $this->discountamount = $this->amount * $rate /100;
+    // }
+
+    // method chaining
+     
+    public function addTax(float $rate): self {
+        $this->taxamount = $this->amount * $rate / 100;
+        return $this; // return the current object for method chaining
     }
 
-    public function getDiscount(float $rate) {
-        $this->discountamount = $this->amount * $rate /100;
+    public function getDiscount(float $rate): self {
+        $this->discountamount = $this->amount * $rate / 100;
+        return $this; // return the current object for method chaining
     }
 
     public function calculateTotalAmount(){
