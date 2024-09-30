@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: DockerFile
+    container_name: codetomohammed-app
+    restart: always
+    working_dir: /var/www/
+    volumes:
+      - ../src:/var/www  # Mount the source code into the app container
+
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: codetomohammed-nginx
+    restart: always
+    ports:
+      - "8000:80"  # Map port 80 in the container to port 8000 on the host
+    volumes:
+      - ../src:/var/www  # Mount the same codebase into the nginx container
+      - ./nginx:/etc/nginx/conf.d  # Corrected the path to your nginx config
