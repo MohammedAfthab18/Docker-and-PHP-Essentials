@@ -17,12 +17,11 @@ for example
       traits ,functions and constants.
 
 Namespaces are virtual directory structures of your classes
-
-We can declare namespaces using namespace keyword
+-- We can declare namespaces using namespace keyword
 
 how to resolve it ?
 
-    use namespaces 
+    -- use namespaces 
      
     - namespace anyName or directory name (recommended) 
        for eg :- 

@@ -1,0 +1,22 @@
+Every time you want to use a new class in your PHP project, 
+first you need to include this class 
+(using include or require language construct,
+that’s right this are not functions). 
+However if you have __autoload function defined, inclusion will handle itself.
+
+include "classes/class.Foo.php";
+ 
+$foo = new Foo;
+$foo->start();
+$foo->stop();
+
+Basic Autoloading Example
+
+function __autoload($class_name) 
+{
+    require_once $DOCUMENT_ROOT."classes/class.".$class_name.".php";
+}
+ 
+$foo = new Foo;
+$foo->start();
+$foo->stop();
