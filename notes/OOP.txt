@@ -1,0 +1,21 @@
+    // using constructor - Magic Methods in PHP and destructor is also a Magic Method in PHP
+    public function __construct(float $amount, string $description , float $taxamount , float $discountamount) {
+        $this->amount = $amount;   // this.amount = amount
+        $this->description = $description; // this.description = description
+        $this->taxamount = $taxamount; // this.taxamount = taxamount 
+        $this->discountamount = $discountamount; // this.discountamount = discountamount
+        echo "Transaction created: {$this->description}<br>";
+    } 
+
+    // Destructor
+    public function __destruct() {
+        echo "Transaction destroyed: {$this->description}<br>";
+    }
+
+1. Destructor is a special function that gets called automatically when an object is destroyed or when the script ends. 
+2. Destructors are defined using the __destruct() method. This method doesn't take any parameters and is automatically 
+   invoked when an object is no longer needed.
+3. Until the reference to the particular instance still persits, the destructor won't call in 
+4. we can unset()function to call destructor to close the class.
+5. Setting the object to null also can call destructor 
+6. will be using in long running script and some database scenarios 
