@@ -1,41 +1,25 @@
 <?php 
 
-require_once '../Transaction.php';
-// Classes and Objects
-//  creating an object -- objectName = new className();
+require_once  '../app/PaymentGateway/Stripe/Transaction.php';
+require_once  '../app/PaymentGateway/Paddle/Transaction.php';
+require_once  '../app/PaymentGateway/Paddle/CustomerPaddle.php';
+require_once  '../app/Notification/Email.php';
 
-// Multiple Instances in the class
-$transaction1 = new Transaction( 255.9, 'Transaction 1' , 0.0 , 0.0);  // passing in the arguments 
 
-$price1 = $transaction1
-            ->addTax(7)
-            ->getDiscount(3)
-            ->calculateTotalAmount();   // Method Chaining
+//use namespaces
 
-$transaction2 = new Transaction( 783.4, 'Transaction 2' , 0.0 , 0.0);  // passing in the arguments 
+//autoloading 
 
-$price2 = $transaction2
-            ->addTax(5)
-            ->getDiscount(2)
-            ->calculateTotalAmount();   // Method Chaining
+// autoload_registers runs in queue
+spl_autoload_register(function ($class) {
+    var_dump($class);
+});
 
-            // Transaction 1
-echo '<pre>';
-echo 'After Tax and Discount, the total amount will be $' . $price1;
-echo '</pre>';
+spl_autoload_register(function ($class) {
+    var_dump($class);
+}, prepend: true);  // if we apply prepend we can run the second script at first
 
-echo '<pre>';
-print_r($transaction1);
-echo '</pre>';
 
-            // Transaction 2     
-              
-echo '<pre>';
-echo 'After Tax and Discount, the total amount will be $' . $price2;
-echo '</pre>';
+use app\PaymentGateway\Paddle\Transaction;
 
-echo '<pre>';
-print_r($transaction2);
-echo '</pre>';
-
-// echo($transaction->getAmount()); -- private variable amount is called in here using public function
+$paddleTransaction = new Transaction();

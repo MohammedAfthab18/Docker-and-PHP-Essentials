@@ -19,3 +19,4 @@
 4. we can unset()function to call destructor to close the class.
 5. Setting the object to null also can call destructor 
 6. will be using in long running script and some database scenarios 
+
