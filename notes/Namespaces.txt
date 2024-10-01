@@ -1,0 +1,47 @@
+Namespaces in PHP serve as a way to encapsulate items such as 
+classes, interfaces, functions, and constants.
+
+If class is declared and never used a namespace for that class,
+it gets in global space.
+
+for example
+    - i have class Transaction in two folders with the same name 
+      so like class transaction in payment/user/transaction.php and 
+      in payment/gateway/transaction.php.
+    
+    - so both gets in global scope and makes it difficult for the php to 
+      which one to insantiate and gives an fatal error , 
+      so namespaces are important concept in OOP 
+    
+    - same for all classes , abstract classes , interfaces , 
+      traits ,functions and constants.
+
+Namespaces are virtual directory structures of your classes
+
+We can declare namespaces using namespace keyword
+
+how to resolve it ?
+
+    use namespaces 
+     
+    - namespace anyName or directory name (recommended) 
+       for eg :- 
+       1. namespace  payment\gateway;
+       2. namespace  payment\user;
+
+    now use these namespaces in the index.php
+
+    First method 
+       
+        var_dump(new payment\gateway\Transaction());
+    
+    Second method 
+     
+        use payment\gateway\Transaction; --  import it using the use keyword
+        var_dump(new Transaction())
+
+    Namespaces name definitions
+      qualified namespace - Notifications\email
+      fully qualified namespace - \Notifications\email
+      unqualified namespace - email
+      relative namespace - namespace\Notifications\email
